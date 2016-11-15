@@ -1,0 +1,224 @@
+/* ======== overrides  ======== */
+html {
+  font-size: 26px;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height:100%;
+	font-family:'Abhaya Libre', serif;
+	font-weight:300;
+	color:#000;
+	letter-spacing:0.65px;
+	height:100%;
+}
+
+a, a:visited {
+	text-decoration: none;
+	color:#000;
+	border-bottom:solid #000 3px;
+	padding-bottom:4px;
+	cursor: pointer;
+}
+a:hover {
+	color:#ff0000;
+	border-bottom:solid #ff0000 3px;
+
+}
+
+
+p {
+	margin:2rem 0;
+	text-indent:60px;
+}
+
+/* ======== global  ======== */
+
+.section {
+	position: relative;
+    background: #fff;
+    z-index: 2;
+    padding:100px 0;
+}
+
+.section-content {
+	width:75%;
+	line-height:1.75rem;
+	margin:0 auto;
+}
+
+.section-title, .section-subtitle {
+	text-align:center;
+	font-family:'Lato', serif;
+	font-weight:600;
+	font-size: 2rem;
+	line-height: 2.5rem;
+}
+
+.section-subtitle {
+	font-size:1rem;
+	line-height:1.5rem;
+	font-weight:300;
+	font-family:'Lato', serif;
+	font-style: italic;
+	margin-top:2rem;
+}
+
+.section-intro {
+	padding:200px 0;
+}
+
+/* ======== Progress Bar ======== */
+
+.progress-bar {
+	height:10px;
+	width:0;
+	background:yellow;
+	position: fixed;
+	z-index: 3;
+	top:0;
+	/*transform: translateY(-100%);
+	transition:transform 0.3s ease-in;
+	*/
+	opacity: 0;
+	transition:opacity 0.15s;
+}
+
+	.progress-bar.is-visible {
+		/*transform: translateY(0);*/
+		opacity: 1;
+		transition-delay:0.3s;
+		box-shadow: 0px 0px 16px -2px rgba(150,150,6,1);
+	}
+
+
+	
+
+
+/* ======== Main Nav ======== */
+
+
+.main-nav {
+	background: #451691;
+	font-size:0.65rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    height:50px;
+    width:100%;
+    z-index:0;
+    transform: translateY(0);
+   transition: transform 0.3s linear;
+   	justify-content: space-around;
+   	top:0;
+
+}
+	.main-nav-inner {
+		width:80%;
+	}
+
+	
+	.main-nav.fixed-top {
+		position: fixed;
+		top:0; 
+		z-index:3;
+	}
+
+
+	.main-nav.slide-out {
+		transform: translateY(-100%);
+	}			
+
+	.main-nav-item {
+		padding:0 0.5rem;
+		border-bottom:none;
+	}
+	a.main-nav-item {
+		color:#fff;
+		font-family:'Lato', serif;
+	}
+	.main-nav-item:hover {
+		color:#ff0000;
+		border-bottom:none;
+	}
+
+	.main-nav-item.logo {
+	}
+	.main-nav-item.logo.is-visible {
+
+	}
+
+
+/* ======== fixed banner  ======== */
+
+
+/*to accommodate for reduced space when banner becomes fixed when it is at top of view port*/
+.section.mod-fixed-banner {
+	padding-top:0;
+	height:500px;
+	z-index:0;
+	flex-direction: column;
+	font-family:'Lato', serif;
+}
+
+#banner1  {
+	background-image:url(../img/shelf.jpg);
+}
+#banner2  {
+	background-image:url(../img/nighttime.jpg);
+}
+
+.fixed-banner {
+	width:100%;
+	height:500px;
+	background-attachment: fixed;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position: center center;
+	color:#fff;
+	font-weight:700;
+	font-size:2rem;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+	top:auto;
+}
+
+.fixed-banner-overlay {
+	background:#000;
+	height:500px;
+	z-index:3 !important;
+	width:100%;
+	position: absolute;
+	opacity: 0;
+}
+
+
+.fixed-top {
+	top:0;
+	position: fixed;
+	z-index:1;
+}
+
+.opacity-transition {
+	transition: opacity 0.5s linear;
+}
+
+/* ======== footer  ======== */
+
+
+.footer {
+	height:60px;
+	background:#451691;
+	color:#fff;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	font-size:0.75rem;
+	font-weight:300;
+	font-family:'Lato', serif;
+}
+
+
+

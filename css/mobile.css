@@ -1,0 +1,22 @@
+/* Smaller Screen */
+@media screen and (max-width: 1024px)  {
+
+	html { font-size:20px; }
+
+}
+
+/* Mobile */
+@media screen and (max-width: 800px)  {
+
+	body { border: dotted purple 1px; }
+	html { font-size:18px; }
+
+	.content { width:90%; flex-direction:column; }
+
+	.section-content {width: 90%; margin:1rem auto;}
+
+	.fixed-banner {
+		height:600px;
+	}
+
+}
