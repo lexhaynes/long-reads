@@ -6,6 +6,7 @@ var nodes = {
 	banner1: document.getElementById('banner1'),
 	banner2: document.getElementById('banner2'),
 	progress_bar: document.getElementsByClassName('progress-bar')[0],
+	buttons: document.getElementsByClassName('button'),
 }
 
 var state = {
@@ -14,7 +15,8 @@ var state = {
 	scrollY: window.scrollY,
 	previous_scrollY: 0,
 	is_mobile: false,
-	screen: 'desktop'
+	screen: 'desktop',
+	plus_button_clicked: false
 }
 
 var positions = {
@@ -91,7 +93,6 @@ var utils = (function() {
 		  }
 		},
 	};
-
 })();
 
 var observers = {
@@ -127,6 +128,7 @@ var effects = {
 			}	
 		});
 	},
+
 	makeProgress: function(scrollY) {
 		var body = document.body;
     	var html = document.documentElement;
@@ -134,11 +136,11 @@ var effects = {
 		var pageHeight = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
 
-		//subtract the position where we start reading from the page height
-		var constant = ( (pageHeight - ( positions.banners[0][state.screen] + Number(els.bannerClientHeight) ) )/100 );
-		var progress = Math.ceil(scrollY/constant);
+		var sectionPaddingTop = window.getComputedStyle(document.getElementsByClassName('section')[2]).paddingTop.replace(/\D/g,'');
 
-		console.log(constant);
+		//subtract the position where we start reading + section top padding from the page height 
+		var constant = ( (pageHeight - ( positions.banners[0][state.screen] + Number(els.bannerClientHeight) + Number(sectionPaddingTop) ) )/100 );
+		var progress = Math.ceil(scrollY/constant);
 
 		nodes.progress_bar.style.width = progress + '%';
 	},
@@ -160,7 +162,29 @@ var handlers = {
 			[nodes.progress_bar, 'is-visible'],
 		]);
 		effects.makeProgress(scrollY);
-	}
+	},
+
+	clickPlusButton: function() {	
+		for (var i = 0; i < nodes.buttons.length; i++) {
+			if (nodes.buttons[i].classList.contains('mod-plus')) {
+				utils.addClass(nodes.buttons[i].children[0], 'rotate');
+			} else {
+				utils.addClass(nodes.buttons[i], 'is-visible');
+				utils.removeClass(nodes.buttons[i], 'is-hidden');
+			}
+		}
+
+	},	
+	closePlusButton: function() {
+		for (var i = 0; i < nodes.buttons.length; i++) {
+			if (nodes.buttons[i].classList.contains('mod-plus')) {
+				utils.removeClass(nodes.buttons[i].children[0], 'rotate');
+			} else {
+				utils.removeClass(nodes.buttons[i], 'is-visible');
+				utils.addClass(nodes.buttons[i], 'is-hidden');
+			}
+		}
+	},
 }
 
 
@@ -169,15 +193,13 @@ var listeners = {
 	scroll: function() {
 		//console.log(this.scrollY);
 		
-
 		state.previous_scrollY = state.scrollY;
 		state.scrollY = this.scrollY || window.pageYOffset || document.documentElement.scrollTop;
 
-		effects.addBannerEffects([nodes.banner1, nodes.banner2], state.scrollY);	
-
+		effects.addBannerEffects([nodes.banner1, nodes.banner2], state.scrollY);
 
 		//keep the nav fixed and progress bar hidden until we get to the article content
-		if (state.scrollY > positions.banners[0][state.screen] + Number(els.bannerClientHeight) ){
+		if (state.scrollY > positions.banners[0][state.screen] ){
 			//if upscrolling
 			if (utils.isScrollingUp()) {
 				handlers.upScroll();
@@ -185,8 +207,7 @@ var listeners = {
 			else {
 				handlers.downScroll(state.scrollY);
 			}
-		} 
-			
+		} 		
 	},
 
 	resize: function() {
@@ -194,7 +215,27 @@ var listeners = {
 		console.log('resized state.screen_size: ' + state.screen_size);
 
 		init();
-	}
+	},
+
+	buttons: function(e) {
+		//make sure we're only detecting the button containers and not the button children
+		var button = e.target == this ? e.target : e.target.parentElement;
+		
+		if (e.type == "click") {
+			//plus button
+			if (button.classList.contains('mod-plus')) {
+				if (!state.plus_button_clicked) {
+					handlers.clickPlusButton();
+					state.plus_button_clicked = true;
+				} else {
+					handlers.closePlusButton();
+					state.plus_button_clicked = false;
+				}
+			}
+			
+		}//end e.type == click 
+	},
+
 }
 
 //INIT
@@ -211,16 +252,21 @@ function init() {
 		//add scrollY to ensure non-negative value id page is re-loaded while scrolled down the page 
 		key[state.screen] = utils.getPosition(key.node).y + state.scrollY;
 	});
-
-
-
-
 }
 
 init();
 
+/* EVENT LISTENERS */
+
 window.addEventListener('resize', listeners.resize, false);
 
 window.addEventListener('scroll', listeners.scroll, false);
+
+//add mouse event handlers for buttons
+for (var i = 0; i < nodes.buttons.length; i++) {
+	nodes.buttons[i].addEventListener('click', listeners.buttons, false);
+}
+		
+
 
 

@@ -69,12 +69,16 @@ p {
 	padding:200px 0;
 }
 
+.box-shadow {
+	box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.5);
+}
+
 /* ======== Progress Bar ======== */
 
 .progress-bar {
 	height:10px;
 	width:0;
-	background:yellow;
+	background:#ffb618;
 	position: fixed;
 	z-index: 3;
 	top:0;
@@ -89,11 +93,10 @@ p {
 		/*transform: translateY(0);*/
 		opacity: 1;
 		transition-delay:0.3s;
-		box-shadow: 0px 0px 16px -2px rgba(150,150,6,1);
+		
 	}
 
 
-	
 
 
 /* ======== Main Nav ======== */
@@ -203,6 +206,108 @@ p {
 
 .opacity-transition {
 	transition: opacity 0.5s linear;
+}
+
+
+/* ======== Bubble buttons ======== */
+
+.button {
+	background:#451691;
+	color:#fff;
+	position: fixed;
+	bottom:100px;
+	right:3rem;
+	z-index:3;
+	width:50px;
+	height:50px;
+	font-size:18px;
+	border-radius:50%;
+	border:none;
+	cursor: pointer;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(0);
+    transition:transform 0.3s, opacity 0.15s;
+
+}
+
+
+.button:active,
+.button:hover,
+.button:focus {
+    background:#340f6f;
+}
+
+.button.is-hidden {
+	opacity:0;
+}
+
+.button.is-visible {
+	opacity: 1;
+}
+
+
+/* ======== Plus button ======== */
+
+.button.mod-plus {
+	background:#ffb618;
+}
+
+.button.mod-plus:active,
+.button.mod-plus:hover,
+.button.mod-plus:focus {
+    background:#ce9212;
+}
+
+	.button-plus {
+		font-family: "Times", sans-serif;
+		font-weight:600;
+		font-size:36px;
+	    padding: 0;
+	    line-height:0;
+	    transform: rotate(0);
+	    transition: transform 0.3s; 
+	}
+
+	.button-plus.rotate {
+		transform: rotate(42deg);
+		margin-left:3px;
+	}
+
+/* ======== Star Button ======== */
+
+.button.mod-star {
+	
+}
+
+.button.mod-star.is-visible {
+	transform:translateY(-420%);
+}
+
+	.button-star { margin-top:2px; }
+
+/* ======== Share Button ======== */
+
+.button.mod-share {
+
+}
+
+.button.mod-share.is-visible {
+	transform:translateY(-280%);
+}
+
+	.button-share { margin-top:4px; }
+
+
+/* ======== Comment Button ======== */
+
+.button.mod-comment {
+	/*bottom:180px;*/
+}
+
+.button.mod-comment.is-visible {
+	transform:translateY(-140%);
 }
 
 /* ======== footer  ======== */
