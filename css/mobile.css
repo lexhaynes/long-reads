@@ -8,15 +8,50 @@
 /* Mobile */
 @media screen and (max-width: 800px)  {
 
-	body { border: dotted purple 1px; }
-	html { font-size:18px; }
+	html { font-size:20px; }
+
+	p { margin:1rem 0; text-indent:24px;}
 
 	.content { width:90%; flex-direction:column; }
 
-	.section-content {width: 90%; margin:1rem auto;}
+	.section { padding:50px 0; }
 
-	.fixed-banner {
-		height:600px;
+
+	.section-content {width: 80%; margin:1rem auto;}
+
+	.section-intro {
+    	padding: 100px 0;
+	}
+
+		.section-intro .section-content {
+			width:90%;
+		}
+
+	.section.mod-fixed-banner, .fixed-banner, .fixed-banner-overlay {
+		height:300px;
+	}
+
+	.fixed-banner {text-align:center; font-size:1.25rem;}
+
+
+	.button { right: 0.25rem; bottom:25px; }
+
+	.button:hover,
+	.button:active,
+	.button:focus {
+		background:#451691;
+	}
+
+	.button.mod-plus:hover,
+	.button.mod-plus:active,
+	.button.mod-plus:focus {
+		background:#ffb618;
+	}
+
+	/*.button-plus { font-size:50px; margin-top:-3px; }*/
+
+	.footer .content {
+		text-align:center;
 	}
 
 }
