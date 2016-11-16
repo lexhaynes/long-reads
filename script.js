@@ -1,6 +1,3 @@
-var $ = document.querySelectorAll.bind(document);
-
-
 var nodes = {
 	nav: document.getElementsByClassName('main-nav')[0],
 	banner1: document.getElementById('banner1'),
@@ -220,8 +217,8 @@ var listeners = {
 	buttons: function(e) {
 		//make sure we're only detecting the button containers and not the button children
 		var button = e.target == this ? e.target : e.target.parentElement;
-		
-		if (e.type == "click") {
+
+		if (e.type == 'click') {
 			//plus button
 			if (button.classList.contains('mod-plus')) {
 				if (!state.plus_button_clicked) {
@@ -232,7 +229,18 @@ var listeners = {
 					state.plus_button_clicked = false;
 				}
 			}
-			
+			//comment button
+			if (button.classList.contains('mod-comment')) {
+				console.log('comment btn');
+			}			
+			//share button
+			if (button.classList.contains('mod-share')) {
+				console.log('share btn');
+			}			
+			//star button
+			if (button.classList.contains('mod-star')) {
+				console.log('star btn');
+			}
 		}//end e.type == click 
 	},
 
