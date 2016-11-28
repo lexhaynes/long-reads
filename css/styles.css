@@ -76,7 +76,7 @@ p {
 /* ======== Progress Bar ======== */
 
 .progress-bar {
-	height:10px;
+	height:4px;
 	width:0;
 	background:#ffb618;
 	position: fixed;
@@ -165,10 +165,10 @@ p {
 	font-family:'Lato', serif;
 }
 
-#banner1  {
+#banner2  {
 	background-image:url(../img/shelf.jpg);
 }
-#banner2  {
+#banner1  {
 	background-image:url(../img/nighttime.jpg);
 }
 
