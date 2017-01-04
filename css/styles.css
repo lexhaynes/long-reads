@@ -22,8 +22,8 @@ a, a:visited {
 	cursor: pointer;
 }
 a:hover {
-	color:inherit;
-	text-decoration:underline;
+	color:#ff0000;
+	border-bottom:solid #ff0000 3px;
 
 }
 
@@ -142,7 +142,8 @@ p {
 		font-family:'Lato', serif;
 	}
 	.main-nav-item:hover {
-		color:#ff0000;
+		color:#fff;
+		font-weight:600;
 		border-bottom:none;
 	}
 
