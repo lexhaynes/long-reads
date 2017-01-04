@@ -22,8 +22,8 @@ a, a:visited {
 	cursor: pointer;
 }
 a:hover {
-	color:#ff0000;
-	border-bottom:solid #ff0000 3px;
+	color:inherit;
+	text-decoration:underline;
 
 }
 
